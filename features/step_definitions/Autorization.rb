@@ -19,10 +19,9 @@
 #aliexpress authorization
 When ('I enter to site and click on log in')do
   $driver.get("https://aliexpress.com")
-  # check_if_visible(:xpath, '//a[@data-role="layer-close"]')
+# check_if_visible(:xpath, '//a[@data-role="layer-close"]')
   get_element(:xpath, '//a[@data-role="layer-close"]').click
   get_element(:xpath, '//span/*[@data-role="sign-link"]').click
-#  get_element(:xpath, '//*[@class="ng-item nav-pinfo-item nav-wishlist"]').click
 end
 And ('I log in to account')do
   $driver.switch_to.frame("alibaba-login-box")
@@ -33,10 +32,10 @@ And ('I log in to account')do
   get_element(:xpath, '//a[@data-role="layer-close"]').click
   acctext = get_element(:xpath, '//*[@data-role="username"]').text
   p acctext
-  unless p acctext.include? "LV"
+  unless acctext.include? "LV"
     rise "Wrong account #{acctext}"
   end
-  p Faker::Games::Pokemon.name + " I choose you!"
+  p Faker::Games::Pokemon.name + ", I choose you!"
 end
 
 #search on ali
@@ -50,10 +49,10 @@ When ('I input "leather jacket" into the search field')do
 end
 And ('I choose to sort by "Newest"')do
   get_element(:xpath, '//*/div[2]/div[2]/div[1]/span/span[3]').click
-  sleep(1)
+#  sleep(1)    # Thank you Alibaba
 end
 And ('I open the first option')do
-#  get_element(:xpath, '//*/div[1]/li[1]/div/div[1]').click
+#  get_element(:xpath, '//*/div[1]/li[1]/div/div[1]').click    # not works correctly
   path = get_element(:xpath, '//*/div[2]/ul/div[1]/li[1]/div/div[1]/div/a').attribute('href')
   $driver.get(path)    # Thank you Alibaba
 end
