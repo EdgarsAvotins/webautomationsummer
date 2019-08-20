@@ -22,7 +22,8 @@ And (/^I input email and click on "Create an account"$/) do
 end
 
 And (/^I choose gender$/) do
-get_element(:id, 'uniform-id_gender1').click
+gender=rand(1..2)
+get_element(:id, "uniform-id_gender#{gender}").click
 end
 
 And (/^I input random first name, last name and password$/) do
@@ -40,14 +41,14 @@ And (/^I input random first name, last name and password$/) do
 end
 
 And (/^I choose random birthdate$/) do
-  @day=1.times.map{ 1 + Random.rand(30) }
-  month=1.times.map{ 1 + Random.rand(12) }
-  year=1.times.map{ 1900 + Random.rand(118) }
+  @day=rand(1..30)
+  month=rand(1..12)
+  year=rand(1900..2018)
 
 #Need ".join" that not be [9], because need 9
-  get_element(:xpath, "//*[@id='days']/option[@value=#{@day.join}]").click
-  get_element(:xpath, "//*[@id='months']/option[@value=#{month.join}]").click
-  get_element(:xpath, "//*[@id='years']/option[@value=#{year.join}]").click
+  get_element(:xpath, "//*[@id='days']/option[@value=#{@day}]").click
+  get_element(:xpath, "//*[@id='months']/option[@value=#{month}]").click
+  get_element(:xpath, "//*[@id='years']/option[@value=#{year}]").click
 end
 
 And (/^I choose to take newsletter and special offers$/) do
@@ -66,9 +67,11 @@ And (/^I input random address and city$/) do
 end
 
 And (/^I choose random state and input random zipcode$/) do
+
+state=rand(1..50)
   zip=5.times.map{ 0 + Random.rand(9) }
 
-  get_element(:xpath, "//*[@id='id_state']/option[#{@day.join}]").click
+  get_element(:xpath, "//*[@id='id_state']/option[@value=#{@day}]").click
   get_element(:id, 'postcode').send_keys(zip)
 end
 
