@@ -1,0 +1,12 @@
+require 'webdrivers'
+require 'selenium-webdriver'
+require 'faker'
+
+Before do
+  $driver = Selenium::WebDriver.for :chrome
+  $driver.get("http://www.automationpractice.com/index.php/")
+end
+
+After do
+  $driver.quit
+end
