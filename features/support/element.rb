@@ -9,7 +9,7 @@ def get_element(type, value)
       error = e
       p "Retry, #{type}: #{value}"
     end
-    sleep(0.1)
+    sleep(0.2)
   end
   raise "Element #{type}: #{value} was not found. #{e}"
 end
@@ -26,7 +26,7 @@ def check_if_visible(type, value, timer: 10)
       error = e
       p "Retry, #{type}: #{value}"
     end
-    sleep(0.1)
+    sleep(0.2)
   end
   return false
 end

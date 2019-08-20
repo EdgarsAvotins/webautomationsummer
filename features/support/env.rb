@@ -4,7 +4,7 @@ require 'faker'
 
 Before do
   $driver = Selenium::WebDriver.for :chrome
-  $driver.get("https://www.aliexpress.com/")
+  $driver.get("http://automationpractice.com/index.php")
   #$driver.get("https://www.sinsay.com/lv/lv/")
 end
 
